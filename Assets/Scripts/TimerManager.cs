@@ -6,25 +6,31 @@ using UnityEngine.UI;
 public class TimerManager : MonoBehaviour
 {
     public float timeValue = 60;
-    public Text TextToDisplay;
+    public Text TextToDisplay;    
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Starts the timer automatically
+        GameStateManager.timerIsRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timeValue > 0)
+        if (GameStateManager.timerIsRunning)
         {
-            timeValue -= Time.deltaTime;
-        }
-        else
-        {
-            timeValue = 0;
-        }
-        TimeToDisplay(timeValue);
+            if (timeValue > 0)
+            {
+                timeValue -= Time.deltaTime;
+            }
+            else
+            {
+                timeValue = 0;
+                GameStateManager.timerIsRunning = false;
+            }
+            TimeToDisplay(timeValue);
+        }                
     }
 
     void TimeToDisplay(float timeToDisplay)
@@ -38,5 +44,6 @@ public class TimerManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         TextToDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        GameStateManager.timerSeconds = seconds;
     }
 }

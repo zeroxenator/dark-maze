@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource audioSource;    
 
     private void Awake()
     {
@@ -13,17 +13,6 @@ public class MusicManager : MonoBehaviour
 
         //Play the audio
         audioSource.Play();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioSource.volume = GameStateManager.volumeLevel;
     }
 }
