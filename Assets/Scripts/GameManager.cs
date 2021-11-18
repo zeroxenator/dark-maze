@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
         {
             PlayerGameOver(false);
         }
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            GotoMainMenuScene();
+        }
     }
 
     public void OnReload()
@@ -34,7 +39,7 @@ public class GameManager : MonoBehaviour
         ReloadGame();
     }
 
-    public void OnMain()
+    public void GotoMainMenuScene()
     {
         SceneManager.LoadScene("MainScene");
     }
@@ -49,11 +54,11 @@ public class GameManager : MonoBehaviour
     {
         if (playerWon)
         {
-            GameStateManager.gameOverText = $"You escaped with {GameStateManager.timerSeconds:00} seconds left! Congrats!";
+            GameStateManager.gameOverText = $"You escaped with \n{GameStateManager.timerSeconds:00} seconds left! \nCongrats!";
         }
         else
         {
-            GameStateManager.gameOverText = "The darkness engulfs you! Try again!";
+            GameStateManager.gameOverText = "The darkness engulfs you! \nTry again!";
         }
 
         SceneManager.LoadScene("EndScene");

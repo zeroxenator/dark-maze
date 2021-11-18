@@ -11,6 +11,6 @@ public class GameStateManager : MonoBehaviour
 
     public static bool musicPlayerOn = true;
 
-    public static string gameOverText;
+    public static string gameOverText = $"You escaped with \n{timerSeconds:00} seconds left! \nCongrats!";
     public static float volumeLevel = 0.5f;
 }
